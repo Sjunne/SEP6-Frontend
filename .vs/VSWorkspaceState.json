@@ -6,7 +6,9 @@
     "\\src\\app\\components",
     "\\src\\app\\components\\tool-bar",
     "\\src\\assets"
+    "\\src\\app\\components\\footer"
   ],
   "SelectedNode": "\\src\\app\\components\\tool-bar\\tool-bar.component.css",
+  "SelectedNode": "\\src\\styles.css",
   "PreviewInSolutionExplorer": false
 }
