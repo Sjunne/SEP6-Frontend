@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\tool-bar",
+    "\\src\\assets"
+  ],
+  "SelectedNode": "\\src\\app\\components\\tool-bar\\tool-bar.component.css",
+  "PreviewInSolutionExplorer": false
+}
