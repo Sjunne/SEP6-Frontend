@@ -4,11 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\tool-bar",
-    "\\src\\assets"
-    "\\src\\app\\components\\footer"
+    "\\src\\assets",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\components\\tool-bar\\tool-bar.component.css",
-  "SelectedNode": "\\src\\styles.css",
+  "SelectedNode": "\\nginx-hosting",
   "PreviewInSolutionExplorer": false
 }
