@@ -11,13 +11,15 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MovieComponent } from './components/movie/movie.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolBarComponent,
-    FooterComponent
+    FooterComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,

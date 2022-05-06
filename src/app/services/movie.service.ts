@@ -9,13 +9,13 @@ import { Movie } from '../models/Movie';
 })
 export class MovieService {
 
-  apiUrl = "http://localhost:3200"
+  apiUrl = "https://localhost:5001"
 
   constructor(private http: HttpClient) { }
 
-  getMovies(): Observable<Movie> {
+  public getMovies(): Observable<Movie> {
     return this.http
-      .get<Movie>(this.apiUrl)
+      .get<Movie>(this.apiUrl + "/api/v1/movie/title/Titanic")
       .pipe(retry(1), catchError(this.handleError));
   }
 
