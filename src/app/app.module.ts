@@ -12,14 +12,25 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './components/movie/movie.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FormsModule } from '@angular/forms';
+import { SearchResultPageComponent } from './components/search-result-page/search-result-page.component';
+import { RouterModule } from '@angular/router';
 
-
+const routes = [
+  { path: 'SearchResults', component: SearchResultPageComponent }
+  //{ path: 'home', component: HomeComponent },
+  //{ path: 'movies', component: MoviesComponent },
+  //{ path: 'movies/:movieId', component: MoviesComponent },
+  //{ path: '*', redirectTo: 'home' }
+];
 @NgModule({
   declarations: [
     AppComponent,
     ToolBarComponent,
     FooterComponent,
-    MovieComponent
+    MovieComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +38,9 @@ import { MovieComponent } from './components/movie/movie.component';
     MdbFormsModule,
     MdbRippleModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
