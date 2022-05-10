@@ -1,6 +1,7 @@
 export class Movie {
-  id!: number
+  id!: string
   title!: string
   year!: number
   posterHttp!: string
+  shortDesc!: string
 }

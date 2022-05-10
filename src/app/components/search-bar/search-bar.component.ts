@@ -9,18 +9,15 @@ import { MovieService } from '../../services/movie.service';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  private list!: Array<Movie>;
   searchText: string = '';
 
-  constructor(private service: MovieService, private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   search() {
-    this.service.getMoviesWithPoster(this.searchText).subscribe(movieList => this.list = movieList);
-    console.info(this.list);
-    this.router.navigate(['/SearchResults']);
+    this.router.navigate(['/SearchResults', this.searchText]);
   }
 
 }
