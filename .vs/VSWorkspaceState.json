@@ -1,15 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nginx-hosting",
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\footer",
-    "\\src\\app\\models",
+    "\\src\\app\\components\\movie",
+    "\\src\\app\\components\\search-bar",
+    "\\src\\app\\components\\search-result-page",
     "\\src\\app\\services",
-    "\\src\\assets"
+    "\\src\\assets",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\nginx-hosting\\app.yaml",
+  "SelectedNode": "\\src\\app\\components\\search-result-page\\search-result-page.component.html",
   "PreviewInSolutionExplorer": false
 }

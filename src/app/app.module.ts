@@ -16,9 +16,18 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { FormsModule } from '@angular/forms';
 import { SearchResultPageComponent } from './components/search-result-page/search-result-page.component';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
+
 
 const routes = [
-  { path: 'SearchResults', component: SearchResultPageComponent }
+  { path: 'SearchResults/:searchText', component: SearchResultPageComponent }
   //{ path: 'home', component: HomeComponent },
   //{ path: 'movies', component: MoviesComponent },
   //{ path: 'movies/:movieId', component: MoviesComponent },
@@ -30,17 +39,24 @@ const routes = [
     ToolBarComponent,
     FooterComponent,
     MovieComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    SearchResultPageComponent
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     MdbFormsModule,
     MdbRippleModule,
     NgbModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    MatDialogModule,
+    MatTableModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

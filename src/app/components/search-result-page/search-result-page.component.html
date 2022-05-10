@@ -1,1 +1,43 @@
-<p>search-result-page works!</p>
+<div fxLayout="column" fxLayoutGap="32px">
+  <mat-card fxLayoutAlign="center">
+    <h1>Movies</h1>
+  </mat-card>
+  <br />
+  <div fxLayout="row" fxLayoutGap="32px">
+    <div fxFlex="75">
+      <br />
+      <mat-card *ngIf="movies">
+        <table mat-table [dataSource]="moviesSource" style="width: 100%"  >
+          <ng-container matColumnDef="poster">
+            <th mat-header-cell *matHeaderCellDef>Poster</th>
+              <td mat-cell *matCellDef="let element">
+                <img alt="poster" src="{{element.posterHttp}}" height="165" width="300" />
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef style="padding:20px">title</th>
+            <td mat-cell *matCellDef="let element" style="padding:20px">
+              {{element.year}}
+              <br />
+              {{element.title}}
+            </td>
+            
+          </ng-container>
+
+          <ng-container matColumnDef="year">
+            <th mat-header-cell *matHeaderCellDef>plot</th>
+            <td mat-cell *matCellDef="let element">{{element.plot}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="redirectToMovie(row)"></tr>
+        </table>
+      </mat-card>
+      <mat-card *ngIf="!movies">
+        <h3>No found movies</h3>
+      </mat-card>
+    </div>
+   
+  </div>
+</div>
