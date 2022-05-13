@@ -3,6 +3,9 @@ import {MovieService} from "../../services/movie.service";
 import {HttpClient, HttpXhrBackend} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Movie} from "../../models/Movie";
+import { ActivatedRoute } from '@angular/router';
+import { FullMovie } from '../../models/FullMovie';
+
 
 @Component({
   selector: 'app-movie',
@@ -11,12 +14,15 @@ import {Movie} from "../../models/Movie";
 })
 export class MovieComponent implements OnInit {
 
-  public title = "";
-  constructor(private service: MovieService) {
+  public movie! :FullMovie;
+  constructor(private service: MovieService, private activated: ActivatedRoute ) {
   }
-
   ngOnInit(): void {
-    this.service.getMovies().subscribe(movie => this.title = movie.title)
+    this.activated.paramMap.subscribe(map => {
+      const movieId = map.get('id')!;
+      this.service.getFullMovie(movieId).subscribe(movie => {
+        this.movie = movie;
+      });
+    });
   }
-
 }

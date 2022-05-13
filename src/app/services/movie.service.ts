@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Movie } from '../models/Movie';
+import { FullMovie } from '../models/FullMovie';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+ 
 
   apiUrl = "https://localhost:44303"
 
@@ -22,6 +24,12 @@ export class MovieService {
   public getMoviesWithPoster(title: string): Observable<Array<Movie>> {
     return this.http
       .get<Array<Movie>>(this.apiUrl + "/api/v1/movie/titleandposter/" + title)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  public getFullMovie(movieId: string): Observable<FullMovie> {
+    return this.http
+      .get<FullMovie>(this.apiUrl + "/api/v1/movie/full/" + movieId)
       .pipe(retry(1), catchError(this.handleError));
   }
 

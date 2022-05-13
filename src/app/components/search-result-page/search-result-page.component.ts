@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { Movie } from '../../models/Movie';
@@ -15,9 +15,8 @@ export class SearchResultPageComponent implements OnInit {
   movies!: Array<Movie>;
   moviesSource = new MatTableDataSource<Movie>();
   searchText!: string;
-  imagePath = "C:\Users\Sjunn\source\repos\SEP6-Frontend\SEP6-Frontend\src\app\images\not-found-image-15383864787lu.jpg"
 
-  constructor(private service: MovieService , private activated: ActivatedRoute) {
+  constructor(private service: MovieService, private activated: ActivatedRoute, private router: Router) {
     
   }
 
@@ -36,8 +35,8 @@ export class SearchResultPageComponent implements OnInit {
     return ['poster', 'title', 'year'];
   }
 
-  redirectToMovie(id: string) {
-
+  redirectToMovie(id: Movie) {
+    this.router.navigate(['/movie', id.id]);
   }
 
 }
