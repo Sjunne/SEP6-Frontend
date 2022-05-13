@@ -26,8 +26,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 
 
+
 const routes = [
-  { path: 'SearchResults/:searchText', component: SearchResultPageComponent }
+  { path: 'SearchResults/:searchText', component: SearchResultPageComponent },
+  { path: 'movie/:id', component: MovieComponent }
   //{ path: 'home', component: HomeComponent },
   //{ path: 'movies', component: MoviesComponent },
   //{ path: 'movies/:movieId', component: MoviesComponent },
@@ -56,7 +58,7 @@ const routes = [
     FormsModule,
     MatDialogModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
