@@ -55,7 +55,7 @@ const routes = [
     SearchBarComponent,
     SearchResultPageComponent,
     FrontPageComponent,
-    CarouselImageComponent
+    CarouselImageComponent,
     DropdownComponent,
     SearchResultActorsComponent,
     PersonComponent,
