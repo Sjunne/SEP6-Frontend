@@ -18,12 +18,18 @@ import { SearchResultPageComponent } from './components/search-result-page/searc
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { FrontPageComponent } from './components/front-page/front-page.component';
+import { CarouselImageComponent } from './components/carousel-image/carousel-image.component';
 
 
 
@@ -42,9 +48,14 @@ const routes = [
     FooterComponent,
     MovieComponent,
     SearchBarComponent,
-    SearchResultPageComponent
+    SearchResultPageComponent,
+    FrontPageComponent,
+    CarouselImageComponent
   ],
   imports: [
+    CarouselModule,
+    ButtonModule,
+    ToastModule,
     MatCardModule,
     BrowserModule,
     AppRoutingModule,

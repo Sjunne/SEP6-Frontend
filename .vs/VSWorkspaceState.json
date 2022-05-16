@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\search-result-page",
-    "\\src\\app\\components\\tool-bar",
+    "\\src\\app\\components\\carousel-image",
+    "\\src\\app\\components\\front-page",
+    "\\src\\app\\components\\movie",
     "\\src\\app\\models",
     "\\src\\app\\services",
-    "\\src\\assets",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\services\\movie.service.ts",
+  "SelectedNode": "\\src\\app\\models\\TmdbMovie.ts",
   "PreviewInSolutionExplorer": false
 }

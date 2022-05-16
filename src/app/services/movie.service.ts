@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Movie } from '../models/Movie';
 import { FullMovie } from '../models/FullMovie';
+import { Root, TmdbMovie } from '../models/TmdbMovie';
 
 
 @Injectable({
@@ -30,6 +31,12 @@ export class MovieService {
   public getFullMovie(movieId: string): Observable<FullMovie> {
     return this.http
       .get<FullMovie>(this.apiUrl + "/api/v1/movie/full/" + movieId)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  public getMostPopularMovies(): Observable<Root> {
+    return this.http
+      .get<Root>(this.apiUrl + "/api/v1/movie/discovery/popularity")
       .pipe(retry(1), catchError(this.handleError));
   }
 
