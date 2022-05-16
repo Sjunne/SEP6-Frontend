@@ -10,6 +10,7 @@ import { MovieService } from '../../services/movie.service';
 })
 export class FrontPageComponent implements OnInit {
   popular: string = 'popular';
+  upcomming: string = 'upcomming';
   constructor(private service: MovieService) {
   
   }

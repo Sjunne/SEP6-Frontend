@@ -40,6 +40,12 @@ export class MovieService {
       .pipe(retry(1), catchError(this.handleError));
   }
 
+  public getUpcommingMovies(): Observable<Root> {
+    return this.http
+      .get<Root>(this.apiUrl + "/api/v1/movie/discovery/upcomming")
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
   private handleError(error: any) {
     //evt. skal bruges i alle services. lav den importable på en måde?
     let message = '';

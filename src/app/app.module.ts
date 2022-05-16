@@ -30,6 +30,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { CarouselImageComponent } from './components/carousel-image/carousel-image.component';
+import { LogInComponent } from './components/log-in/log-in.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+/* Firebase services */
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth/";
+import { environment } from '../environments/environment';
 
 
 
@@ -50,7 +57,9 @@ const routes = [
     SearchBarComponent,
     SearchResultPageComponent,
     FrontPageComponent,
-    CarouselImageComponent
+    CarouselImageComponent,
+    LogInComponent,
+    DashboardComponent
   ],
   imports: [
     CarouselModule,
@@ -70,6 +79,8 @@ const routes = [
     MatDialogModule,
     MatTableModule,
     MatTooltipModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -48,6 +48,17 @@ export class CarouselImageComponent implements OnInit {
         }
       });
     }
+
+    if (this.direction == "upcomming") {
+      this.headline = "Upcomming Movies";
+      this.service.getUpcommingMovies().subscribe((root) => {
+        this.root = root;
+        this.movieList = root.results
+        for (let i = 0; i < this.movieList.length; i++) {
+          this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
+        }
+      });
+    }
    
 
 
