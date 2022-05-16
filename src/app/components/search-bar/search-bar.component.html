@@ -1,4 +1,11 @@
-<form class="example" action="action_page.php">
-  <input type="text" id="searchText" name="searchText" [(ngModel)]="searchText" placeholder="Search.." name="search">
-  <button type="submit" (click)="search()"><i class="fa fa-search">Search..</i></button>
-</form>
+<div style="display: flex;">
+  <select name="my-select" [(ngModel)]="category" (change)="selectCategory()">
+    <option [value]="item.id" *ngFor="let item of categories">
+      {{item.name}}
+    </option>
+  </select>
+  <form class="example" action="action_page.php">
+    <input type="text" id="searchText" name="searchText" [(ngModel)]="searchText" placeholder="Search.." name="search">
+    <button type="submit" (click)="search()"><i class="fa fa-search">Search</i></button>
+  </form>
+</div>

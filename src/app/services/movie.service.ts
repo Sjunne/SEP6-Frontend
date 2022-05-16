@@ -12,7 +12,7 @@ import { Root, TmdbMovie } from '../models/TmdbMovie';
 export class MovieService {
  
 
-  apiUrl = "https://localhost:44303"
+  apiUrl = "https://localhost:5001"
 
   constructor(private http: HttpClient) { }
 
