@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Root, TmdbMovie } from '../../models/TmdbMovie';
+import { RootSeries, TmdbSeries } from '../../models/TmdbSeries';
 import { MovieService } from '../../services/movie.service';
 
 @Component({
@@ -10,9 +11,16 @@ import { MovieService } from '../../services/movie.service';
 export class CarouselImageComponent implements OnInit {
   headline!: string
   @Input() direction!: string
-  root!: Root
-  movieList!: TmdbMovie[]
   responsiveOptions: any;
+
+  movie = false;
+  series = false;
+
+  movieList!: TmdbMovie[];
+  root!: Root;
+
+  seriesList!: TmdbSeries[];
+  rootSeries!: RootSeries;
 
 
 
@@ -39,6 +47,7 @@ export class CarouselImageComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.direction == "popular") {
+      this.movie = true;
       this.headline = "Best Ranked Movies";
       this.service.getMostPopularMovies().subscribe((root) => {
         this.root = root;
@@ -48,9 +57,42 @@ export class CarouselImageComponent implements OnInit {
         }
       });
     }
-   
 
+    if (this.direction == "upcomming") {
+      this.movie = true;
+      this.headline = "Upcomming Movies";
+      this.service.getUpcommingMovies().subscribe((root) => {
+        this.root = root;
+        this.movieList = root.results
+        for (let i = 0; i < this.movieList.length; i++) {
+          this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
+        }
+      });
+    }
 
+    if (this.direction == "theaters") {
+      this.movie = true;
+      this.headline = "In Theaters Now";
+      this.service.getUpcommingMovies().subscribe((root) => {
+        this.root = root;
+        this.movieList = root.results
+        for (let i = 0; i < this.movieList.length; i++) {
+          this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
+        }
+      });
+    }
+
+    if (this.direction == "series") {
+      this.series = true;
+      this.headline = "Most Popular Series";
+      this.service.getMostPopularSeries().subscribe((root) => {
+        this.rootSeries = root;
+        this.seriesList = root.results
+        for (let i = 0; i < this.seriesList.length; i++) {
+          this.seriesList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.seriesList[i].poster_path;
+        }
+      });
+    }
   }
 
 }

@@ -4,6 +4,7 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 import { Movie } from '../models/Movie';
 import { FullMovie } from '../models/FullMovie';
 import { Root, TmdbMovie } from '../models/TmdbMovie';
+import { RootSeries } from '../models/TmdbSeries';
 
 
 @Injectable({
@@ -37,6 +38,24 @@ export class MovieService {
   public getMostPopularMovies(): Observable<Root> {
     return this.http
       .get<Root>(this.apiUrl + "/api/v1/movie/discovery/popularity")
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  public getUpcommingMovies(): Observable<Root> {
+    return this.http
+      .get<Root>(this.apiUrl + "/api/v1/movie/discovery/upcomming")
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  public getInTheaters(): Observable<Root> {
+    return this.http
+      .get<Root>(this.apiUrl + "/api/v1/movie/discovery/theaters")
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  public getMostPopularSeries(): Observable<RootSeries> {
+    return this.http
+      .get<RootSeries>(this.apiUrl + "/api/v1/movie/discovery/seriespopular")
       .pipe(retry(1), catchError(this.handleError));
   }
 
