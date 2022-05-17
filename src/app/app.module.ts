@@ -31,7 +31,19 @@ import { MatCardModule } from '@angular/material/card';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { CarouselImageComponent } from './components/carousel-image/carousel-image.component';
 
-
+//firebase
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { DashboardComponent } from './components/firebase/dashboard/dashboard.component';
+import { SignInComponent } from './components/firebase/sign-in/sign-in.component';
+import { SignUpComponent } from './components/firebase/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/firebase/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/firebase/verify-email/verify-email.component';
+import { AuthService } from "./shared/services/auth.service";
 
 const routes = [
   { path: 'SearchResults/:searchText', component: SearchResultPageComponent },
@@ -50,7 +62,12 @@ const routes = [
     SearchBarComponent,
     SearchResultPageComponent,
     FrontPageComponent,
-    CarouselImageComponent
+    CarouselImageComponent,
+    DashboardComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     CarouselModule,
@@ -70,8 +87,13 @@ const routes = [
     MatDialogModule,
     MatTableModule,
     MatTooltipModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
