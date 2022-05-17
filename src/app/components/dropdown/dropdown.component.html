@@ -1,0 +1,8 @@
+<select name="my-select" [(ngModel)]="mySelect" (change)="selectChange()">
+  <option [value]="item.id" *ngFor="let item of data">
+    {{item.name}}
+  </option>
+</select>
+<div>
+  Selected: {{selectedValue}}
+</div>
