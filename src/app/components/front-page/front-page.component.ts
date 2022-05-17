@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Root, TmdbMovie } from '../../models/TmdbMovie';
 import { MovieService } from '../../services/movie.service';
+import { User } from '../../shared/services/user';
 
 
 @Component({
@@ -10,12 +11,17 @@ import { MovieService } from '../../services/movie.service';
 })
 export class FrontPageComponent implements OnInit {
   popular: string = 'popular';
+  user!: User;
+  loggedIn = false;
+
   constructor(private service: MovieService) {
   
   }
 
   ngOnInit(): void {
-   
+    this.user = JSON.parse(localStorage.getItem('user')!);
+    if (this.user != null)
+      this.loggedIn = true
     }
 
 }

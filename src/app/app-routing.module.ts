@@ -9,7 +9,7 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 const routes: Routes = [
   { path: '', redirectTo: 'front-page', pathMatch: 'full' },
-  { path: 'front-page', component: FrontPageComponent, canActivate: [AuthGuard] },
+  { path: 'front-page', component: FrontPageComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'register-user', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },

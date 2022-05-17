@@ -3,7 +3,9 @@
     <app-carousel-image [direction]="popular"></app-carousel-image>
   </div>
 
-  <div style="float: left; padding-top: 5px;">
-    <app-sign-in></app-sign-in>
-  </div>
+  <span *ngIf="!loggedIn">
+    <div style="float: left; padding-top: 5px;">
+      <app-sign-in></app-sign-in>
+    </div>
+  </span>
   </div>
