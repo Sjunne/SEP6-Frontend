@@ -3,6 +3,7 @@ import {Root, TmdbMovie} from '../../models/TmdbMovie';
 import {RootSeries, TmdbSeries} from '../../models/TmdbSeries';
 import {MovieService} from '../../services/movie.service';
 import {ActorsService} from "../../services/actors.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-carousel-image',
@@ -25,7 +26,8 @@ export class CarouselImageComponent implements OnInit {
 
 
   constructor(private service: MovieService,
-              private actorService: ActorsService) {
+              private actorService: ActorsService,
+              private router: Router) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -103,5 +105,10 @@ export class CarouselImageComponent implements OnInit {
         }
       });
     }
+  }
+
+  public SelectMovie(image: TmdbMovie) {
+    //this should be changed to imdb_id
+    this.router.navigate(['/movie', image.id]);
   }
 }
