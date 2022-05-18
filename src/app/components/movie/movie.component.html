@@ -11,11 +11,9 @@
     </div>
 
 
-
-
     <div style="display: flex; height: 443px">
       <div style="">
-        <img src="{{movie.poster}}" style="height: 443px" />
+        <img src="{{movie.poster}}" style="height: 443px"/>
       </div>
       <div style="float: left; width: 40%; padding: 5px; overflow:auto; height: 443px; border-bottom: none">
         <h3>Summary:</h3>
@@ -25,16 +23,16 @@
         <div>
           <h3>Actors:</h3>
           <ul>
-            <li *ngFor='let actor of movie.actorList'>
-              <a href=""> {{ actor }} </a>
+            <li (click)="SelectPerson(actor)" *ngFor='let actor of movie.actorList'>
+              <p>{{ actor }} </p>
             </li>
           </ul>
         </div>
         <div>
           <h3>Directors:</h3>
           <ul>
-            <li *ngFor='let director of movie.directorList'>
-              <a href=""> {{ director }} </a>
+            <li (click)="SelectPerson(director)" *ngFor='let director of movie.directorList'>
+              <p>{{ director }} </p>
             </li>
           </ul>
         </div>
