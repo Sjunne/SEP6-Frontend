@@ -5,6 +5,7 @@ import {Movie} from "../models/Movie";
 import {Actor} from "../models/Actor";
 import {Person} from "../models/Person"
 import {Cast} from "../models/Cast"
+import {Crew} from "../models/Crew";
 import {KnownFor, PersonDetail} from "../models/PersonDetail";
 import {GoogleChartInterface, GoogleChartType} from "ng2-google-charts";
 
@@ -98,7 +99,12 @@ export class ActorsService {
       dataTable:data,
       options: {'title': 'Career Development'},
     };
+  }
 
-
+  public getFullCreditCrew(id: string): Observable<Array<Crew>> {
+    let p =  this.http
+      .get<Array<Crew>>(this.apiUrl + "/api/v1/actor/fullcredits/crew/" + id)
+      .pipe(retry(1), catchError(this.handleError));
+    return p
   }
 }

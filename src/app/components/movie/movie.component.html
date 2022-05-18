@@ -24,7 +24,7 @@
           <h3>Actors:</h3>
           <ul>
             <li (click)="SelectPerson(actor)" *ngFor='let actor of movie.actorList'>
-              <p>{{ actor }} </p>
+              <a>{{ actor }} </a>
             </li>
           </ul>
         </div>
@@ -32,7 +32,7 @@
           <h3>Directors:</h3>
           <ul>
             <li (click)="SelectPerson(director)" *ngFor='let director of movie.directorList'>
-              <p>{{ director }} </p>
+              <a>{{ director }} </a>
             </li>
           </ul>
         </div>

@@ -102,12 +102,35 @@ export class CarouselImageComponent implements OnInit {
       this.movie = true
       this.headline = "Has had a role in following movies";
       let id = this.direction.split(",")[1]
-      this.actorService.getFullCreditId(id).subscribe(p => {
+      let person
+      this.actorService.getPersonById(id).subscribe(p => {
+        person = p
+        if (person.known_for_department == "Directing") {
+          this.actorService.getFullCreditCrew(id).subscribe(p => {
+            this.movieList = p
+            for (let i = 0; i < this.movieList.length; i++) {
+              this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
+            }
+          });
+        } else if (person.known_for_department == "Acting") {
+          this.actorService.getFullCreditId(id).subscribe(p => {
+            this.movieList = p
+            for (let i = 0; i < this.movieList.length; i++) {
+              this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
+            }
+          });
+        }
+      })
+
+
+     /* this.actorService.getFullCreditId(id).subscribe(p => {
         this.movieList = p
         for (let i = 0; i < this.movieList.length; i++) {
           this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
         }
       });
+
+      */
     }
 
     if (this.direction.includes("popular/actors")) {
@@ -124,7 +147,7 @@ export class CarouselImageComponent implements OnInit {
 
   public SelectMovie(image: TmdbMovie) {
     //this should be changed to imdb_id
-    this.router.navigate(['/movie', image.id]);
+    this.router.navigate(['/movie', image.imdb_id]);
   }
 
   SelectActor(image: Person) {
