@@ -10,26 +10,6 @@ import {MdbRippleModule} from 'mdb-angular-ui-kit/ripple';
 import {MdbFormsModule} from 'mdb-angular-ui-kit/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { HttpClientModule } from '@angular/common/http';
-import { MovieComponent } from './components/movie/movie.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { FormsModule } from '@angular/forms';
-import { SearchResultPageComponent } from './components/search-result-page/search-result-page.component';
-import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { CarouselModule } from 'primeng/carousel';
-import { ButtonModule } from 'primeng/button';
-import { ToastModule } from 'primeng/toast';
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatCardModule } from '@angular/material/card';
-import { FrontPageComponent } from './components/front-page/front-page.component';
-import { CarouselImageComponent } from './components/carousel-image/carousel-image.component';
 
 //firebase
 import { AngularFireModule } from '@angular/fire/compat';
@@ -94,8 +74,7 @@ const routes = [
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
-    CarouselImageComponent,
+    VerifyEmailComponent,
     DropdownComponent,
     SearchResultActorsComponent,
     PersonComponent,

@@ -1,4 +1,4 @@
-<div style="background-color:darkslategray">
+<div style="background-color:darkslategray; display: flex;">
   <div style="padding-top: 5px; padding-left: 10px">
     <div style="height: 150px">
       <h1>Welcome</h1>
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <span *ngIf="!loggedIn">
+  <span *ngIf="!loggedIn" style="float: left;">
     <div style="float: left; padding-top: 5px;">
       <app-sign-in></app-sign-in>
     </div>
