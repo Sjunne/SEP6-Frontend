@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {Person} from "../../models/Person";
-import {PersonDetail} from "../../models/PersonDetail";
+import {KnownFor, PersonDetail} from "../../models/PersonDetail";
 import {ActorsService} from "../../services/actors.service";
 import {MatTableDataSource} from "@angular/material/table";
-
+import {GoogleChartInterface, GoogleChartType, ChartSelectEvent, ChartReadyEvent, ChartErrorEvent} from "ng2-google-charts";
+import {Cast} from "../../models/Cast";
 
 @Component({
   selector: 'app-person',
@@ -13,18 +14,65 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class PersonComponent implements OnInit {
 
+  public movies!: Cast[];
+  public selectEvent!: ChartSelectEvent;
   private id!: string;
   public person!: PersonDetail
-  constructor(private activated: ActivatedRoute, private service: ActorsService) {
+  lineChart: GoogleChartInterface = this.getStats();
+  knownfor: string = 'knownfor';
+
+  constructor(private activated: ActivatedRoute,
+              private service: ActorsService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.activated.paramMap.subscribe(map => {
       this.id = map.get('id')!;
+      this.knownfor = this.knownfor + "," + this.id
     });
     this.service.getPersonById(this.id).subscribe(person => {
       this.person = person;
+      this.lineChart = this.service.getStats(this.person.known_for)
     });
+
+    this.service.getFullCreditId(this.id).subscribe(casts => {
+      this.movies = casts;
+      //this.lineChart = this.service.getStats2(casts);
+    });
+  }
+
+  public select(event: ChartSelectEvent) {
+    let i = event.row
+    if (i != null ) {
+      console.log(this.movies[i].original_title)
+      console.log(this.movies[i].imdb_id)
+
+      this.router.navigate(['/movie', this.movies[i].imdb_id]);
+    }
+    this.selectEvent = event;
+  }
+
+  public ready(event: ChartReadyEvent) {
+    console.log(event.message);
+  }
+
+  public error(event: ChartErrorEvent) {
+    console.error('Error: ' + event);
+  }
+
+  public getStats()  {
+    let GoogleChartInterface;
+
+    let data = [['hello', 'Career'],
+      ['D', 9]];
+
+    data.push(['A', 90])
+    return GoogleChartInterface = {
+      chartType: GoogleChartType.LineChart,
+      dataTable:data,
+      options: {'title': 'Career Development'},
+    };
   }
 
 }
