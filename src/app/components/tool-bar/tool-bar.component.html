@@ -1,5 +1,8 @@
 <div class="tool-bar-container">
   <div>
     <app-search-bar></app-search-bar>
+    <div *ngIf="loggedIn">
+      <button (click)="logout()"> Logout </button>
+    </div>
   </div>
 </div>

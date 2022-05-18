@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\carousel-image",
+    "\\src\\app\\components\\firebase",
     "\\src\\app\\components\\front-page",
-    "\\src\\app\\components\\movie",
+    "\\src\\app\\components\\tool-bar",
     "\\src\\app\\models",
-    "\\src\\app\\services",
-    "\\src\\environments"
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\services"
   ],
-  "SelectedNode": "\\src\\app\\models\\TmdbMovie.ts",
+  "SelectedNode": "\\src\\app\\shared\\services\\user.ts",
   "PreviewInSolutionExplorer": false
 }
