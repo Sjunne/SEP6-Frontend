@@ -48,6 +48,9 @@ import {CommonModule} from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import {SearchResultActorsComponent} from './components/search-result-actors/search-result-actors.component';
 import {PersonComponent} from './components/person/person.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 const routes = [
   {path: 'SearchResults/:searchText', component: SearchResultPageComponent},
   {path: 'movie/:id', component: MovieComponent},
@@ -80,6 +83,8 @@ const routes = [
     PersonComponent,
   ],
   imports: [
+    ReactiveFormsModule,
+    Ng2GoogleChartsModule,
     CarouselModule,
     ButtonModule,
     ToastModule,

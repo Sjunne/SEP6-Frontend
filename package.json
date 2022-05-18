@@ -29,6 +29,7 @@
     "lodash": "^4.17.21",
     "mdb-angular-ui-kit": "^2.1.0",
     "movie-trailer": "^2.1.0",
+    "ng2-google-charts": "^7.0.0",
     "primeflex": "^3.2.0",
     "primeicons": "^5.0.0",
     "primeng": "^13.4.0",

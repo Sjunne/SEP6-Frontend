@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Root, TmdbMovie } from '../../models/TmdbMovie';
-import { RootSeries, TmdbSeries } from '../../models/TmdbSeries';
-import { MovieService } from '../../services/movie.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {Root, TmdbMovie} from '../../models/TmdbMovie';
+import {RootSeries, TmdbSeries} from '../../models/TmdbSeries';
+import {MovieService} from '../../services/movie.service';
+import {ActorsService} from "../../services/actors.service";
 
 @Component({
   selector: 'app-carousel-image',
@@ -23,8 +24,8 @@ export class CarouselImageComponent implements OnInit {
   rootSeries!: RootSeries;
 
 
-
-  constructor(private service: MovieService) {
+  constructor(private service: MovieService,
+              private actorService: ActorsService) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -42,7 +43,7 @@ export class CarouselImageComponent implements OnInit {
         numScroll: 1
       }
     ];
-   }
+  }
 
   ngOnInit(): void {
 
@@ -76,9 +77,6 @@ export class CarouselImageComponent implements OnInit {
       this.service.getUpcommingMovies().subscribe((root) => {
         this.root = root;
         this.movieList = root.results
-        for (let i = 0; i < this.movieList.length; i++) {
-          this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
-        }
       });
     }
 
@@ -93,6 +91,17 @@ export class CarouselImageComponent implements OnInit {
         }
       });
     }
-  }
 
+    if (this.direction.includes("knownfor")) {
+      this.movie = true
+      this.headline = "Has had a role in following movies";
+      let id = this.direction.split(",")[1]
+      this.actorService.getFullCreditId(id).subscribe(p => {
+        this.movieList = p
+        for (let i = 0; i < this.movieList.length; i++) {
+          this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
+        }
+      });
+    }
+  }
 }

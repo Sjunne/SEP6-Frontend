@@ -4,7 +4,9 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 import {Movie} from "../models/Movie";
 import {Actor} from "../models/Actor";
 import {Person} from "../models/Person"
-import {PersonDetail} from "../models/PersonDetail";
+import {Cast} from "../models/Cast"
+import {KnownFor, PersonDetail} from "../models/PersonDetail";
+import {GoogleChartInterface, GoogleChartType} from "ng2-google-charts";
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,13 @@ export class ActorsService {
     return p
   }
 
+  public getFullCreditId(id: string): Observable<Array<Cast>> {
+    let p =  this.http
+      .get<Array<Cast>>(this.apiUrl + "/api/v1/actor/fullcredits/" + id)
+      .pipe(retry(1), catchError(this.handleError));
+    return p
+  }
+
   private handleError(error: any) {
     //evt. skal bruges i alle services. lav den importable på en måde?
     let message = '';
@@ -44,5 +53,45 @@ export class ActorsService {
 
     window.alert(message);
     return throwError(() => message);
+  }
+
+  public getStats(known_for: KnownFor[])  {
+    let GoogleChartInterface;
+
+    let data = [['hello', 'Career'],
+      [ known_for[0].original_title, known_for[0].vote_average]];
+
+    for (let i = 1; i < known_for.length; i++) {
+      console.log( known_for[i].vote_average)
+      data.push([ known_for[i].original_title, known_for[i].vote_average])
+    }
+
+    return GoogleChartInterface = {
+      chartType: GoogleChartType.LineChart,
+      dataTable:data,
+      options: {'title': 'Career Development'},
+    };
+
+
+  }
+
+  public getStats2(movies: Cast[])  {
+    let GoogleChartInterface;
+    let median = movies[0].median;
+
+    let data = [['Title', 'Score', 'Average'],
+      [ movies[0].title, movies[0].vote_average, 7], ];
+
+    for (let i = 1; i < movies.length; i++) {
+      data.push([ movies[i].title, movies[i].vote_average, 7], )
+    }
+
+    return GoogleChartInterface = {
+      chartType: GoogleChartType.LineChart,
+      dataTable:data,
+      options: {'title': 'Career Development'},
+    };
+
+
   }
 }
