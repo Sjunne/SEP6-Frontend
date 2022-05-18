@@ -4,6 +4,8 @@ import {RootSeries, TmdbSeries} from '../../models/TmdbSeries';
 import {MovieService} from '../../services/movie.service';
 import {ActorsService} from "../../services/actors.service";
 import {Router} from "@angular/router";
+import {Person} from '../../models/Person';
+
 
 @Component({
   selector: 'app-carousel-image',
@@ -17,8 +19,10 @@ export class CarouselImageComponent implements OnInit {
 
   movie = false;
   series = false;
+  actors = false;
 
   movieList!: TmdbMovie[];
+  actorList!: Person[];
   root!: Root;
 
   seriesList!: TmdbSeries[];
@@ -105,10 +109,25 @@ export class CarouselImageComponent implements OnInit {
         }
       });
     }
+
+    if (this.direction.includes("popular/actors")) {
+      this.actors = true
+      this.headline = "Popular Actors";
+      this.actorService.getPopularActors().subscribe(p => {
+        this.actorList = p
+        for (let i = 0; i < this.movieList.length; i++) {
+          this.actorList[i].profile_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
+        }
+      });
+    }
   }
 
   public SelectMovie(image: TmdbMovie) {
     //this should be changed to imdb_id
     this.router.navigate(['/movie', image.id]);
+  }
+
+  SelectActor(image: Person) {
+    this.router.navigate(['/Person', image.id]);
   }
 }

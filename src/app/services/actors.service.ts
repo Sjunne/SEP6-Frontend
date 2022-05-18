@@ -41,6 +41,13 @@ export class ActorsService {
     return p
   }
 
+  public getPopularActors(): Observable<Array<Person>> {
+    let p =  this.http
+      .get<Array<Person>>(this.apiUrl + "/api/v1/actor/people/popular")
+      .pipe(retry(1), catchError(this.handleError));
+    return p
+  }
+
   private handleError(error: any) {
     //evt. skal bruges i alle services. lav den importable på en måde?
     let message = '';

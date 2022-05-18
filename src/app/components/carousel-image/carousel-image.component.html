@@ -24,10 +24,29 @@
       <p-carousel [value]="seriesList" [numVisible]="5" [numScroll]="1"
                   [circular]="true" [autoplayInterval]="0" [responsiveOptions]="responsiveOptions">
         <ng-template let-image pTemplate="item">
-          <div class="item card">
+          <div class="item card" (click)="SelectMovie(image)">
             <img src="{{image.poster_path}}" style="max-height:300px; margin:0 auto;" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title" style="color: black">{{image.original_name}}</h5>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+</div>
+
+<div *ngIf='actors'>
+  <h1>{{headline}}</h1>
+  <div class="content-section col-md-6">
+    <div class="card">
+      <p-carousel [value]="actorList" [numVisible]="5" [numScroll]="1"
+                  [circular]="true" [autoplayInterval]="0" [responsiveOptions]="responsiveOptions">
+        <ng-template let-image pTemplate="item">
+          <div class="item card" (click)="SelectActor(image)">
+            <img src="{{image.profile_path}}" style="max-height:300px; margin:0 auto;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title" style="color: black">{{image.name}}</h5>
             </div>
           </div>
         </ng-template>

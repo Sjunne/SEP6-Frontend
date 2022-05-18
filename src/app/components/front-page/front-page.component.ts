@@ -14,12 +14,13 @@ export class FrontPageComponent implements OnInit {
   upcomming: string = 'upcomming';
   theaters: string = 'theaters';
   series: string = 'series';
+  actors: string = "popular/actors";
 
   user!: User;
   loggedIn = false;
 
   constructor(private service: MovieService) {
-  
+
   }
 
   ngOnInit(): void {

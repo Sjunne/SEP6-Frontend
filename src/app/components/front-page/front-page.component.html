@@ -4,12 +4,14 @@
       <h1>Welcome</h1>
       <p>this webpage uses The Movie DB API for data</p>
       <a href="https://www.themoviedb.org/documentation/api">
-        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg"
-             style="max-width:250px"/>
-        </a>
+        <img
+          src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg"
+          style="max-width:250px"/>
+      </a>
     </div>
     <div style="align-content:center">
       <app-carousel-image [direction]="popular"></app-carousel-image>
+      <app-carousel-image [direction]="actors"></app-carousel-image>
       <app-carousel-image [direction]="upcomming"></app-carousel-image>
       <app-carousel-image [direction]="series"></app-carousel-image>
       <app-carousel-image [direction]="theaters"></app-carousel-image>
@@ -21,4 +23,4 @@
       <app-sign-in></app-sign-in>
     </div>
   </span>
-  </div>
+</div>
