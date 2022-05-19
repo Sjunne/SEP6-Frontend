@@ -12,6 +12,7 @@ export interface TmdbSeries {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+  imdb_db: string;
 }
 
 export interface RootSeries {

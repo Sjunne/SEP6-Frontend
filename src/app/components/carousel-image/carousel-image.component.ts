@@ -121,16 +121,6 @@ export class CarouselImageComponent implements OnInit {
           });
         }
       })
-
-
-     /* this.actorService.getFullCreditId(id).subscribe(p => {
-        this.movieList = p
-        for (let i = 0; i < this.movieList.length; i++) {
-          this.movieList[i].poster_path = "https://image.tmdb.org/t/p/original/" + this.movieList[i].poster_path;
-        }
-      });
-
-      */
     }
 
     if (this.direction.includes("popular/actors")) {
@@ -146,7 +136,6 @@ export class CarouselImageComponent implements OnInit {
   }
 
   public SelectMovie(image: TmdbMovie) {
-    //this should be changed to imdb_id
     this.router.navigate(['/movie', image.imdb_id]);
   }
 

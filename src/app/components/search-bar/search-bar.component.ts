@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from "../../models/Movie";
 import { MovieService } from '../../services/movie.service';
 import {DropdownService} from "../../services/dropdown.service";
+import { User } from '../../shared/services/user';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,6 +12,8 @@ import {DropdownService} from "../../services/dropdown.service";
 })
 export class SearchBarComponent implements OnInit {
   searchText: string = '';
+  user!: User;
+  loggedIn = false;
   category = '1';
   selectedCategory: string = "";
   categories = [
@@ -31,6 +34,9 @@ export class SearchBarComponent implements OnInit {
   constructor(private router: Router, private dropdown: DropdownService) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user')!);
+    if (this.user != null)
+      this.loggedIn = true
   }
   selectCategory() {
     this.selectedCategory = this.dropdown.getDropDownText(this.category, this.categories)[0].name;

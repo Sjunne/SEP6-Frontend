@@ -8,4 +8,9 @@
     <input type="text" id="searchText" name="searchText" [(ngModel)]="searchText" placeholder="Search.." name="search">
     <button type="submit" (click)="search()"><i class="fa fa-search">Search</i></button>
   </form>
+  <span *ngIf="!loggedIn" style="float: left;">
+    <div style="float: left; padding-top: 5px;">
+      <app-sign-in></app-sign-in>
+    </div>
+  </span>
 </div>
