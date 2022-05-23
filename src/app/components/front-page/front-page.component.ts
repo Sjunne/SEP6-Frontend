@@ -14,6 +14,7 @@ export class FrontPageComponent implements OnInit {
   upcomming: string = 'upcomming';
   theaters: string = 'theaters';
   series: string = 'series';
+  public hardCoded: string = '0499549';
 
   user!: User;
   loggedIn = false;

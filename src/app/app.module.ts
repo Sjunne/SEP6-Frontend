@@ -33,7 +33,7 @@ import {CarouselImageComponent} from './components/carousel-image/carousel-image
 import {HttpClientModule} from '@angular/common/http';
 import {MovieComponent} from './components/movie/movie.component';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SearchResultPageComponent} from './components/search-result-page/search-result-page.component';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -48,6 +48,9 @@ import {CommonModule} from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import {SearchResultActorsComponent} from './components/search-result-actors/search-result-actors.component';
 import {PersonComponent} from './components/person/person.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 const routes = [
   {path: 'SearchResults/:searchText', component: SearchResultPageComponent},
   {path: 'movie/:id', component: MovieComponent},
@@ -78,8 +81,12 @@ const routes = [
     DropdownComponent,
     SearchResultActorsComponent,
     PersonComponent,
+    CommentsComponent,
+    CommentComponent,
+    CommentFormComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     CarouselModule,
     ButtonModule,
     ToastModule,
