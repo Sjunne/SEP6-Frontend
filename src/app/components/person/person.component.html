@@ -1,7 +1,7 @@
 <div class="container" style="margin: 100px">
   <div class="row">
     <div class="col">
-      <img alt="poster" src="{{this.person.profile_path}}"/>
+      <img alt="poster" src="{{this.person.profile_path}}" />
     </div>
     <div class="col">
       <p style="color: black">{{this.person.name}}</p>
@@ -16,3 +16,4 @@
   <app-carousel-image [direction]="knownfor"></app-carousel-image>
   <google-chart [data]="lineChart" (chartReady)="ready($event)" (chartError)="error($event)" (chartSelect)="select($event)"></google-chart>
 </div>
+<app-comments [movieId]="id"></app-comments>

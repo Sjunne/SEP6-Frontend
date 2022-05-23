@@ -14,6 +14,7 @@ export class ToolBarComponent implements OnInit {
   user!: User;
   loggedIn = false;
 
+
   constructor(private router: Router, public authService: AuthService) {
     
   }

@@ -13,7 +13,7 @@ import {GoogleChartInterface, GoogleChartType} from "ng2-google-charts";
   providedIn: 'root'
 })
 export class ActorsService {
-  apiUrl = "https://localhost:5001"
+  apiUrl = "https://localhost:44303"
   constructor(private http: HttpClient) { }
 
   public getActors(searchString: string):  Observable<Array<Actor>>  {

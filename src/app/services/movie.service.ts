@@ -13,7 +13,7 @@ import { RootSeries } from '../models/TmdbSeries';
 export class MovieService {
 
 
-  apiUrl = "https://localhost:5001"
+  apiUrl = "https://localhost:44303"
 
   constructor(private http: HttpClient) { }
 

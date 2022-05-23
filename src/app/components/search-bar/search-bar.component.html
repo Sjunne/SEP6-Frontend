@@ -1,16 +1,14 @@
-<div style="display: flex;">
+<div style="display: flex; padding: 11px 0px; margin-left: 50%">
   <select name="my-select" [(ngModel)]="category" (change)="selectCategory()">
     <option [value]="item.id" *ngFor="let item of categories">
       {{item.name}}
     </option>
   </select>
   <form class="example" action="action_page.php">
-    <input type="text" id="searchText" name="searchText" [(ngModel)]="searchText" placeholder="Search.." name="search">
-    <button type="submit" (click)="search()"><i class="fa fa-search">Search</i></button>
+    <input type="text" id="searchText" name="searchText" [(ngModel)]="searchText" placeholder="Search.." style="width: 400px">
   </form>
-  <span *ngIf="!loggedIn" style="float: left;">
-    <div style="float: left; padding-top: 5px;">
-      <app-sign-in></app-sign-in>
-    </div>
-  </span>
+  <form class="example" action="action_page.php">
+    <button type="submit" (click)="search()" style="width: 100px">Search</button>
+  </form>
+
 </div>

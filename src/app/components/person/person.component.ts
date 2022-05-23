@@ -16,7 +16,7 @@ export class PersonComponent implements OnInit {
 
   public movies!: Cast[];
   public selectEvent!: ChartSelectEvent;
-  private id!: string;
+  public id!: string;
   public person!: PersonDetail
   lineChart: GoogleChartInterface = this.getStats();
   knownfor: string = 'knownfor';
