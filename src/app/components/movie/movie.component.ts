@@ -28,6 +28,7 @@ export class MovieComponent implements OnInit {
     this.activated.paramMap.subscribe(map => {
       const movieId = map.get('id')!;
       this.service.getFullMovie(movieId).subscribe(movie => {
+        movie.id = movie.imdbID.substring(2);
         this.movie = movie;
       });
 
