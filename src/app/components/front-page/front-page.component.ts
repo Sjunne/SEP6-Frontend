@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Root, TmdbMovie } from '../../models/TmdbMovie';
 import { MovieService } from '../../services/movie.service';
 import { User } from '../../shared/services/user';
@@ -19,7 +20,7 @@ export class FrontPageComponent implements OnInit {
   user!: User;
   loggedIn = false;
 
-  constructor(private service: MovieService) {
+  constructor(private service: MovieService, private router: Router) {
 
   }
 
@@ -29,4 +30,5 @@ export class FrontPageComponent implements OnInit {
       this.loggedIn = true
     }
 
+ 
 }
