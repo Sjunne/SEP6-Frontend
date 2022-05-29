@@ -1,7 +1,11 @@
-<p> {{userProfile}}</p>
-<h3>FavoriteMovies:</h3>
-<ul>
-  <li *ngFor='let movie of favList'>
-    <a>{{ movie.movieId }} </a>
-  </li>
-</ul>
+
+<div style="padding-top: 20px">
+  <p> User: {{userProfile}}</p>
+  <h3>FavoriteMovies:</h3>
+  <ul>
+    <li *ngFor='let movie of favList'>
+      <a>{{ movie.title }} </a>
+    </li>
+  </ul>
+</div>
+

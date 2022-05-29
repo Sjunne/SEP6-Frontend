@@ -25,7 +25,7 @@ export class CommentComponent implements OnInit {
   user!: User;
 
 
-
+  createdAt: string = '';
   canReply: boolean = false;
   canEdit: boolean = false;
   canDelete: boolean = false;
@@ -40,8 +40,8 @@ export class CommentComponent implements OnInit {
 
     const fiveMinutes = 300000;
     const timePassed = new Date().getMilliseconds() - new Date(this.comment.createdAt).getMilliseconds() > fiveMinutes;
-
-    this.canEdit = this.user.email === this.comment.username && !timePassed
+    this.createdAt = new Date(this.comment.createdAt).toLocaleDateString() 
+    this.canEdit = this.user.email === this.comment.username && !timePassed && this.replies.length === 0
     this.canDelete = this.user.email === this.comment.username && !timePassed && this.replies.length === 0;
     this.canReply = Boolean(this.user);
 

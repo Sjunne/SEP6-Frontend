@@ -5,7 +5,7 @@
   <div class="comment-right-part">
     <div class="comment-content">
       <div class="comment-author">{{comment.username}}</div>
-      <div>{{ comment.createdAt }}</div>
+      <div>{{   createdAt }}</div>
     </div>
       <div class="comment-text" *ngIf="!isEditing()"> {{comment.body}} </div>
       <app-comment-form *ngIf="isEditing()" submitLabel="Update"
