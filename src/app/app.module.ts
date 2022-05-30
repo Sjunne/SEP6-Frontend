@@ -50,7 +50,7 @@ import {SearchResultActorsComponent} from './components/search-result-actors/sea
 import {PersonComponent} from './components/person/person.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { RatingComponent } from './components/rating/rating.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
@@ -92,6 +92,7 @@ const routes = [
     CommentComponent,
     CommentFormComponent,
     ProfileComponent,
+    RatingComponent,
   ],
   imports: [
     ReactiveFormsModule,

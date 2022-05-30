@@ -1,0 +1,17 @@
+<h2>Five Star Rating</h2>
+<div class="col-lg-8 col-md-4 col-sm">
+  <form name="form" (ngSubmit)="f.form.valid && submitForm(f)" #f="ngForm" novalidate>
+    <br />
+    <ngb-rating [max]="5" [(rate)]="rating1" [readonly]="false">
+      <ng-template let-fill="fill" let-index="index">
+        <span class="star" [class.filled]="fill === 100" [class.bad]="index <= 5">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+    <p>Rating 1 : {{rating1}}</p>
+    <hr class="survey-hr">
+    <div class="form-group">
+      <button mdbBtn color="success" mdbWavesEffect
+              [ngClass]="{'is-invalid': f.submitted && !f.form.valid}">Submit</button>
+    </div>
+  </form>
+</div>

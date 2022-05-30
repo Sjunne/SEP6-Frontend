@@ -8,6 +8,8 @@ import { FullMovie } from '../../models/FullMovie';
 import {ActorsService} from "../../services/actors.service";
 import {ChartReadyEvent} from "ng2-google-charts";
 import { User } from '../../shared/services/user';
+import {RatingService} from "../../services/rating.service";
+import firebase from "firebase/compat";
 
 
 @Component({
@@ -18,21 +20,29 @@ import { User } from '../../shared/services/user';
 export class MovieComponent implements OnInit {
 
   public movie! :FullMovie;
+  user!: User;
   private searchString!: string;
+  public currentRate!: number;
+  public averageRate!: number;
+  public alreadyRated!: boolean;
+  public notRated!: boolean;
   public id!: number;
   public isFavorite!: boolean;
-  user!: User;
 
   constructor(private service: MovieService,
+              private ratingService: RatingService,
               private activated: ActivatedRoute,
               private personService: ActorsService,
               private router: Router) {
   }
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user')!);
-   
+
     this.activated.paramMap.subscribe(map => {
       const movieId = map.get('id')!;
+      this.ratingService.averageRating(movieId).subscribe(average => {
+        this.averageRate = average
+      })
       this.service.getFullMovie(movieId).subscribe(movie => {
         movie.id = movie.imdbID.substring(2);
         this.movie = movie;
@@ -40,22 +50,41 @@ export class MovieComponent implements OnInit {
           this.isFavorite = FavoriteMovieModel.favorite;
           console.log(this.isFavorite + "check")
         }
-
         );
       });
-     
+
     });
-   
+
+      this.user = JSON.parse(localStorage.getItem('user')!);
+      this.ratingService.getCurrentRating("my@gmail.com", this.movie.imdbID).subscribe(rating => {
+        this.currentRate = rating;
+        if (this.currentRate > 0) {
+          this.alreadyRated = true;
+          this.notRated = false;
+        } else {
+          this.alreadyRated = false;
+          this.notRated = true;
+        }
+        console.log(this.currentRate)
+      });
   }
 
   public SelectPerson(name: string) {
     this.personService.getPeople(name).subscribe(actorList => {
       this.id = actorList[0].id;
-      console.log(this.id)
       this.router.navigate(['Person', this.id]);
     });
+  }
 
+  public Rate() {
+    this.ratingService.rate("this.user.email", this.movie.imdbID, this.currentRate).subscribe()
+  }
 
+  public UnRate() {
+    this.currentRate = 0;
+    this.alreadyRated = false;
+    this.notRated = true;
+    this.ratingService.Unrate("this.user.email", this.movie.imdbID);
   }
 
   public changeFavorite() {
