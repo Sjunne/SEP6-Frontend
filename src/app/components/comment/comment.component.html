@@ -4,7 +4,7 @@
   </div>
   <div class="comment-right-part">
     <div class="comment-content">
-      <div class="comment-author">{{comment.username}}</div>
+      <div class="comment-author" (click)="enterProfile()">{{comment.username}}</div>
       <div>{{   createdAt }}</div>
     </div>
       <div class="comment-text" *ngIf="!isEditing()"> {{comment.body}} </div>

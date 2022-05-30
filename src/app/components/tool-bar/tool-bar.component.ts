@@ -34,5 +34,10 @@ export class ToolBarComponent implements OnInit {
   redirectToProfile() {
     this.router.navigate(['/profile', this.user.email]);
   }
+
+  toFrontPage() {
+    console.log("toFrontpage")
+    this.router.navigate(['/front-page']);
+  }
 }
 

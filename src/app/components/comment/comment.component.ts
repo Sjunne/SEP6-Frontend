@@ -4,6 +4,7 @@ import { ActiveCommentType } from '../../models/ActiveCommentType.enum';
 import { ActiveCommentModel } from '../../models/ActiveCommentModel';
 import { CommentModel } from '../../models/CommentModel';
 import { User } from '../../shared/services/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comment',
@@ -33,7 +34,7 @@ export class CommentComponent implements OnInit {
 
   ActiveCommentType = ActiveCommentType
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user')!);
@@ -66,6 +67,10 @@ export class CommentComponent implements OnInit {
       this.activeComment.id === this.comment.id &&
       this.activeComment.type === this.ActiveCommentType.editing
     );
+  }
+
+  enterProfile() {
+    this.router.navigate(['/profile', this.comment.username]);
   }
 
 }
