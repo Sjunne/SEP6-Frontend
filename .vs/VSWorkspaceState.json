@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\comments",
-    "\\src\\app\\components\\front-page",
-    "\\src\\app\\components\\movie",
+    "\\src\\app\\components\\comment",
+    "\\src\\app\\components\\comment-form",
+    "\\src\\app\\components\\dropdown",
     "\\src\\app\\models",
     "\\src\\app\\services",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\services\\comment.service.ts",
+  "SelectedNode": "\\src\\app\\components\\comment\\comment.component.html",
   "PreviewInSolutionExplorer": false
 }

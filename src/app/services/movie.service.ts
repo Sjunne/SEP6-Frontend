@@ -5,12 +5,14 @@ import { Movie } from '../models/Movie';
 import { FullMovie } from '../models/FullMovie';
 import { Root, TmdbMovie } from '../models/TmdbMovie';
 import { RootSeries } from '../models/TmdbSeries';
+import { FavoriteMovieModel } from '../models/FavoriteMovieModel';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+ 
 
 
   apiUrl = "https://localhost:44303"
@@ -28,6 +30,31 @@ export class MovieService {
       .get<Array<Movie>>(this.apiUrl + "/api/v1/movie/titleandposter/" + title)
       .pipe(retry(1), catchError(this.handleError));
   }
+
+  public checkFavorite(email: string, id: string): Observable<FavoriteMovieModel> {
+    console.log("HER")
+    return this.http
+      .get<FavoriteMovieModel>(this.apiUrl + "/api/v1/movie/checkFavorite/" + email + "/" + id)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  public getFavorites(userProfile: string): Observable<Array<FavoriteMovieModel>> {
+    return this.http
+      .get<Array<FavoriteMovieModel>>(this.apiUrl + "/api/v1/movie/getFavorites/" + userProfile)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+
+  public changeFavorite(favorite: boolean, username: string, movieId: string): Observable<FavoriteMovieModel> {
+    return this.http
+      .post<FavoriteMovieModel>(this.apiUrl + "/api/v1/movie/setFavorite",
+        {
+          favorite: favorite,
+          username: username,
+          movieId: movieId,
+        });
+  }
+
 
   public getFullMovie(movieId: string): Observable<FullMovie> {
     return this.http

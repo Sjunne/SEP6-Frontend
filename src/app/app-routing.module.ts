@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/firebase/forgot-password/f
 import { VerifyEmailComponent } from './components/firebase/verify-email/verify-email.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { FrontPageComponent } from './components/front-page/front-page.component';
+import { ProfileComponent } from './components/profile/profile.component';
 const routes: Routes = [
   { path: '', redirectTo: 'front-page', pathMatch: 'full' },
   { path: 'front-page', component: FrontPageComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

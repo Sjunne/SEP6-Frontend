@@ -49,13 +49,17 @@ import {MatSelectModule} from '@angular/material/select';
 import {SearchResultActorsComponent} from './components/search-result-actors/search-result-actors.component';
 import {PersonComponent} from './components/person/person.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { CommentsComponent } from './components/comments/comments.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MatIconModule } from '@angular/material/icon';
 const routes = [
   {path: 'SearchResults/:searchText', component: SearchResultPageComponent},
-  {path: 'movie/:id', component: MovieComponent},
+  { path: 'movie/:id', component: MovieComponent },
+  { path: 'profile/:userEmail', component: ProfileComponent },
   {path: 'Movies/SearchResults/:searchText', component: SearchResultPageComponent},
   {path: 'Actors/SearchResults/:searchText', component: SearchResultActorsComponent},
   {path: 'Person/:id', component: PersonComponent}
@@ -87,10 +91,13 @@ const routes = [
     CommentsComponent,
     CommentComponent,
     CommentFormComponent,
+    ProfileComponent,
   ],
   imports: [
     ReactiveFormsModule,
+    MatButtonToggleModule,
     Ng2GoogleChartsModule,
+    MatIconModule,
     CarouselModule,
     ButtonModule,
     ToastModule,

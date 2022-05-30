@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+  import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { CommentModel } from '../models/CommentModel';
@@ -44,7 +44,6 @@ export class CommentService {
   }
 
   private handleError(error: any) {
-    //evt. skal bruges i alle services. lav den importable på en måde?
     let message = '';
     if (error.error instanceof ErrorEvent) {
       message = error.error.message;

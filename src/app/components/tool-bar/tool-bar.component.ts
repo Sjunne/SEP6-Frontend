@@ -30,5 +30,9 @@ export class ToolBarComponent implements OnInit {
   logout(): void {
     this.authService.SignOut();
   }
+
+  redirectToProfile() {
+    this.router.navigate(['/profile', this.user.email]);
+  }
 }
 

@@ -38,7 +38,6 @@ export class CommentsComponent implements OnInit {
   }
 
   addComment({ text, parentId }: { text: string, parentId : null|string }): void {
-    //her gemmer jeg på databasen
     this.CommentService.createComment(text, parentId, this.movieId, this.user.email).subscribe(createdComment => {
       this.comments = [...this.comments, createdComment]
       this.activeComment = null;
@@ -59,7 +58,6 @@ export class CommentsComponent implements OnInit {
   }
 
   updateComment({ text, commentId }: { text: string, commentId: string }) {
-    //call service
     this.CommentService.updateComment(commentId, text).subscribe((updatedComment) => {
       this.comments = this.comments.map((comment) => {
         if (comment.id == commentId) {
