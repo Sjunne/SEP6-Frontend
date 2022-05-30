@@ -18,7 +18,7 @@ export class PersonComponent implements OnInit {
   public selectEvent!: ChartSelectEvent;
   public id!: string;
   public person!: PersonDetail
-  lineChart: GoogleChartInterface = this.getStats();
+  lineChart!: GoogleChartInterface;
   knownfor: string = 'knownfor';
 
   constructor(private activated: ActivatedRoute,
@@ -33,13 +33,14 @@ export class PersonComponent implements OnInit {
     });
     this.service.getPersonById(this.id).subscribe(person => {
       this.person = person;
-      this.lineChart = this.service.getStats(this.person.known_for)
+      //this.lineChart = this.service.getStats(this.person.known_for)
     });
-
     this.service.getFullCreditId(this.id).subscribe(casts => {
+      console.info(casts)
       this.movies = casts;
-      //this.lineChart = this.service.getStats2(casts);
+      this.lineChart = this.service.getStats2(casts);
     });
+    
   }
 
   public select(event: ChartSelectEvent) {

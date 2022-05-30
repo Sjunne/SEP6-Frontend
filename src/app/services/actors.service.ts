@@ -36,10 +36,9 @@ export class ActorsService {
   }
 
   public getFullCreditId(id: string): Observable<Array<Cast>> {
-    let p =  this.http
+    return this.http
       .get<Array<Cast>>(this.apiUrl + "/api/v1/actor/fullcredits/" + id)
       .pipe(retry(1), catchError(this.handleError));
-    return p
   }
 
   public getPopularActors(): Observable<Array<Person>> {
@@ -63,14 +62,14 @@ export class ActorsService {
     return throwError(() => message);
   }
 
-  public getStats(known_for: KnownFor[])  {
+  public getStats(known_for: KnownFor[]) {
+    console.log("work")
     let GoogleChartInterface;
 
     let data = [['hello', 'Career'],
       [ known_for[0].original_title, known_for[0].vote_average]];
 
     for (let i = 1; i < known_for.length; i++) {
-      console.log( known_for[i].vote_average)
       data.push([ known_for[i].original_title, known_for[i].vote_average])
     }
 
@@ -79,19 +78,17 @@ export class ActorsService {
       dataTable:data,
       options: {'title': 'Career Development'},
     };
-
-
   }
 
-  public getStats2(movies: Cast[])  {
+  public getStats2(movies: Cast[]): GoogleChartInterface  {
+    console.log("STtATS")
     let GoogleChartInterface;
     let median = movies[0].median;
 
     let data = [['Title', 'Score', 'Average'],
-      [ movies[0].title, movies[0].vote_average, 7], ];
-
+    [movies[0].original_title, movies[0].vote_average, median]];
     for (let i = 1; i < movies.length; i++) {
-      data.push([ movies[i].title, movies[i].vote_average, 7], )
+      data.push([movies[i].title, movies[i].vote_average, median])
     }
 
     return GoogleChartInterface = {
