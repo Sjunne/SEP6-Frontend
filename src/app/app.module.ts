@@ -50,6 +50,7 @@ import {SearchResultActorsComponent} from './components/search-result-actors/sea
 import {PersonComponent} from './components/person/person.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { RatingComponent } from './components/rating/rating.component';
 
 const routes = [
   {path: 'SearchResults/:searchText', component: SearchResultPageComponent},
@@ -57,10 +58,6 @@ const routes = [
   {path: 'Movies/SearchResults/:searchText', component: SearchResultPageComponent},
   {path: 'Actors/SearchResults/:searchText', component: SearchResultActorsComponent},
   {path: 'Person/:id', component: PersonComponent}
-  //{ path: 'home', component: HomeComponent },
-  //{ path: 'movies', component: MoviesComponent },
-  //{ path: 'movies/:movieId', component: MoviesComponent },
-  //{ path: '*', redirectTo: 'home' }
 ];
 
 @NgModule({
@@ -81,6 +78,7 @@ const routes = [
     DropdownComponent,
     SearchResultActorsComponent,
     PersonComponent,
+    RatingComponent,
   ],
   imports: [
     ReactiveFormsModule,
