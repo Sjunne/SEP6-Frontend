@@ -62,26 +62,7 @@ export class ActorsService {
     return throwError(() => message);
   }
 
-  public getStats(known_for: KnownFor[]) {
-    console.log("work")
-    let GoogleChartInterface;
-
-    let data = [['hello', 'Career'],
-      [ known_for[0].original_title, known_for[0].vote_average]];
-
-    for (let i = 1; i < known_for.length; i++) {
-      data.push([ known_for[i].original_title, known_for[i].vote_average])
-    }
-
-    return GoogleChartInterface = {
-      chartType: GoogleChartType.LineChart,
-      dataTable:data,
-      options: {'title': 'Career Development'},
-    };
-  }
-
-  public getStats2(movies: Cast[]): GoogleChartInterface  {
-    console.log("STtATS")
+  public getCarrierDevelopment(movies: Cast[]): GoogleChartInterface  {
     let GoogleChartInterface;
     let median = movies[0].median;
 

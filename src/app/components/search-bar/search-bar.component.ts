@@ -23,11 +23,7 @@ export class SearchBarComponent implements OnInit {
     },
     {
       id: 2,
-      name: 'Actors',
-    },
-    {
-      id: 3,
-      name: 'Producers',
+      name: 'People',
     },
   ];
 
@@ -46,7 +42,7 @@ export class SearchBarComponent implements OnInit {
     if (this.selectedCategory == "" || this.selectedCategory == "Movies") {
       this.router.navigate(['Movies/SearchResults', this.searchText]);
     }
-    else if (this.selectedCategory == "Actors") {
+    else if (this.selectedCategory == "People") {
       this.router.navigate(['Actors/SearchResults', this.searchText]);
     }
   }
