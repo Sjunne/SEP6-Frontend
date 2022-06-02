@@ -15,7 +15,7 @@ export class MovieService {
  
 
 
-  apiUrl = "https://localhost:44303"
+  apiUrl = "https://sep6-movies-cloud.lm.r.appspot.com"
 
   constructor(private http: HttpClient) { }
 

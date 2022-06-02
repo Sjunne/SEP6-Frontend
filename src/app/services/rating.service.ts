@@ -2,19 +2,19 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Movie} from "../models/Movie";
-import {Rating} from "../models/rating";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RatingService {
-  apiUrl = "https://localhost:5001"
+  apiUrl = "https://sep6-movies-cloud.lm.r.appspot.com"
 
   constructor(private http: HttpClient) {
 
   }
 
   public getCurrentRating(gmail: string, movieid: string): Observable<number> {
+    console.log("henter rating")
     return this.http
       .get<number>(this.apiUrl + "/api/v1/movie/getrating/" + movieid + "," + gmail)
       .pipe(retry(1), catchError(this.handleError));
@@ -39,7 +39,7 @@ export class RatingService {
       .post<number>(this.apiUrl + "/api/v1/movie/rating/",
         {
           gmail: gmail,
-          movieId: movieid,
+          id: movieid,
           rating: rating,
         });
   }

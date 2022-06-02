@@ -1,16 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\nginx-hosting",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\components",
-    "\\src\\app\\components\\comment",
-    "\\src\\app\\components\\comment-form",
-    "\\src\\app\\components\\dropdown",
+    "\\src\\app\\components\\firebase\\sign-in",
     "\\src\\app\\models",
     "\\src\\app\\services",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\components\\comment\\comment.component.html",
+  "SelectedNode": "\\src\\app\\models\\TmdbSeries.ts",
   "PreviewInSolutionExplorer": false
 }

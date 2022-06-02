@@ -51,22 +51,21 @@ export class MovieComponent implements OnInit {
           console.log(this.isFavorite + "check")
         }
         );
-      });
+        this.ratingService.getCurrentRating(this.user.email, this.movie.id).subscribe(rating => {
 
+          this.currentRate = rating;
+          if (this.currentRate > 0) {
+            this.alreadyRated = true;
+            this.notRated = false;
+          } else {
+            this.alreadyRated = false;
+            this.notRated = true;
+          }
+          console.log(this.notRated + "her")
+        });
+      });
+      
     });
-
-      this.user = JSON.parse(localStorage.getItem('user')!);
-      this.ratingService.getCurrentRating("my@gmail.com", this.movie.imdbID).subscribe(rating => {
-        this.currentRate = rating;
-        if (this.currentRate > 0) {
-          this.alreadyRated = true;
-          this.notRated = false;
-        } else {
-          this.alreadyRated = false;
-          this.notRated = true;
-        }
-        console.log(this.currentRate)
-      });
   }
 
   public SelectPerson(name: string) {
@@ -77,14 +76,23 @@ export class MovieComponent implements OnInit {
   }
 
   public Rate() {
-    this.ratingService.rate("this.user.email", this.movie.imdbID, this.currentRate).subscribe()
+    this.ratingService.rate(this.user.email, this.movie.id, this.currentRate).subscribe(() => {
+      this.alreadyRated = true, this.notRated = false,
+        this.ratingService.averageRating(this.movie.id).subscribe(avg => {
+          this.averageRate = avg;
+        });
+    })
   }
 
   public UnRate() {
     this.currentRate = 0;
     this.alreadyRated = false;
     this.notRated = true;
-    this.ratingService.Unrate("this.user.email", this.movie.imdbID);
+    this.ratingService.Unrate(this.user.email, this.movie.id).subscribe(() => {
+      this.ratingService.averageRating(this.movie.id).subscribe(avg => {
+        this.averageRate = avg;
+      });
+    });
   }
 
   public changeFavorite() {

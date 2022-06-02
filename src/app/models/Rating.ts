@@ -1,5 +1,5 @@
 export class Rating {
   gmail!: string
-  movieid!: string
+  id!: string
   rating!: number
 }
