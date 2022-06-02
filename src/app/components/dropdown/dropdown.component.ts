@@ -17,11 +17,7 @@ export class DropdownComponent implements OnInit {
     },
     {
       id: 2,
-      name: 'Actors',
-    },
-    {
-      id: 3,
-      name: 'Producers',
+      name: 'People',
     },
   ];
 

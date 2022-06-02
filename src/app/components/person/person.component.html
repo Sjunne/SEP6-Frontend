@@ -13,7 +13,7 @@
       <p style="color: black">{{ this.person.biography }}</p>
     </div>
   </div>
-  <!-- <app-carousel-image [direction]="knownfor"></app-carousel-image>-->
+  <app-carousel-image [direction]="knownfor"></app-carousel-image>
   <google-chart *ngIf="movies" [data]="lineChart" (chartReady)="ready($event)" (chartError)="error($event)" (chartSelect)="select($event)"></google-chart>
 </div>
 <app-comments [movieId]="id"></app-comments>

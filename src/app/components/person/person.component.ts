@@ -33,14 +33,13 @@ export class PersonComponent implements OnInit {
     });
     this.service.getPersonById(this.id).subscribe(person => {
       this.person = person;
-      //this.lineChart = this.service.getStats(this.person.known_for)
     });
     this.service.getFullCreditId(this.id).subscribe(casts => {
       console.info(casts)
       this.movies = casts;
-      this.lineChart = this.service.getStats2(casts);
+      this.lineChart = this.service.getCarrierDevelopment(casts);
     });
-    
+
   }
 
   public select(event: ChartSelectEvent) {
@@ -60,20 +59,6 @@ export class PersonComponent implements OnInit {
 
   public error(event: ChartErrorEvent) {
     console.error('Error: ' + event);
-  }
-
-  public getStats()  {
-    let GoogleChartInterface;
-
-    let data = [['hello', 'Career'],
-      ['D', 9]];
-
-    data.push(['A', 90])
-    return GoogleChartInterface = {
-      chartType: GoogleChartType.LineChart,
-      dataTable:data,
-      options: {'title': 'Career Development'},
-    };
   }
 
 }
