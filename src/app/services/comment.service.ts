@@ -7,7 +7,8 @@ import { CommentModel } from '../models/CommentModel';
   providedIn: 'root'
 })
 export class CommentService {
-  apiUrl = "https://sep6-movies-cloud.lm.r.appspot.com"
+  //apiUrl = "https://sep6-movies-cloud.lm.r.appspot.com"
+  apiUrl = "https://localhost:44303"
   constructor(private http: HttpClient) { }
 
   getComments(CurrentMovie: string): Observable<CommentModel[]> {
